@@ -1,39 +1,30 @@
 import { useGLTF, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useControls } from "leva";
 import { gsap } from "gsap";
 
 interface Props {
-  isHovered: boolean;
-  setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
   test1: boolean;
   setTest1: React.Dispatch<React.SetStateAction<boolean>>;
   test2: boolean;
   setTest2: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Model: React.FC<Props> = ({
-  isHovered,
-  setIsHovered,
-  test1,
-  setTest1,
-  test2,
-  setTest2,
-}) => {
-  const { camera, viewport } = useThree();
+const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
+  const { viewport } = useThree();
   const { nodes } = useGLTF("/Statue.glb");
   const mesh = useRef(null);
   const scale = viewport.width / 40;
   const tl1 = useRef(null);
   const tl2 = useRef(null);
   const materialProps = useControls({
-    thickness: { value: 0, min: 0, max: 3, step: 0.05 },
+    thickness: { value: 3, min: 0, max: 3, step: 0.05 },
     roughness: { value: 0.2, min: 0, max: 1, step: 0.1 },
     transmission: { value: 1, min: 0, max: 1, step: 0.1 },
-    ior: { value: 3, min: 0, max: 3, step: 0.1 },
-    chromaticAberration: { value: 0., min: 0, max: 1 },
-    backside: { value: false },
+    ior: { value: 0.4, min: 0, max: 3, step: 0.1 },
+    chromaticAberration: { value: 0.6, min: 0, max: 1 },
+    backside: { value: true },
     transparent: { value: false },
     opacity: { value: 0, min: 0, max: 1, step: 0.05 },
   });
@@ -136,12 +127,7 @@ const Model: React.FC<Props> = ({
   }, []);
 
   return (
-    <group
-      scale={[scale, scale, scale]}
-      dispose={null}
-      rotation={[0, 2.25, 0]}
-      // onDoubleClick={() => setIsHovered(!isHovered)}
-    >
+    <group scale={[scale, scale, scale]} dispose={null} rotation={[0, 2.25, 0]}>
       <mesh ref={mesh} {...nodes.Statue}>
         <MeshTransmissionMaterial {...materialProps} />
       </mesh>
