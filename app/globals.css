@@ -13,8 +13,10 @@
     width: 100%;
     min-height: 100vh;
     position: relative;
-    background: #070707;
-    background: whitesmoke;
+    background:
+      linear-gradient(45deg, transparent 0%, transparent 57%, #03045e 100%),
+      linear-gradient(-45deg, #023e8a 0%, #0077b6 0.3%, #0096c7 112%, transparent 11%),
+      linear-gradient(-90deg, #00b4d8 100%, #48cae4 65%, transparent 20%);
   }
 
   * {
@@ -23,8 +25,6 @@
     box-sizing: border-box;
     color: whitesmoke;
     line-height: 1.4;
-    z-index: 2;
-    /* z-index: 1; */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -46,12 +46,17 @@
     transition: 150ms linear;
   }
 
+  p {
+    font-size: clamp(12px, 2vw, 16px);
+  }
+
   .nav {
     position: fixed;
     left: 5%;
     top: 5%;
     display: flex;
     gap: 2rem;
+    z-index: 3;
   }
 
   .container-holder {
@@ -73,13 +78,7 @@
     position: fixed;
     height: 100vh;
     width: 100%;
-    z-index: 1;
-    /* z-index: 2; */
-
-    background:
-      linear-gradient(45deg, transparent 0%, transparent 57%, #03045e 100%),
-      linear-gradient(-45deg, #023e8a 0%, #0077b6 0.3%, #0096c7 112%, transparent 11%),
-      linear-gradient(-90deg, #00b4d8 100%, #48cae4 65%, transparent 20%);
+    z-index: 2;
   }
 
   .instructions {
@@ -90,6 +89,7 @@
     li {
       all: unset;
       display: block;
+      font-size: clamp(12px, 2vw, 16px);
     }
   }
 

@@ -46,17 +46,6 @@ export default function Showcase2() {
               elit. Suspendisse potenti. Curabitur at quam pellentesque nisi
               tincidunt pellentesque. Nullam eget maximus erat. Praesent vel
               dignissim metus. Aenean congue sit amet sapien at tincidunt.
-              <br />
-              <br />
-              Nullam eu consectetur nunc, eu malesuada enim. Mauris at metus ut
-              lacus fermentum euismod eu eu justo. Morbi tincidunt augue et ante
-              pretium facilisis. Vivamus aliquam metus nec sem accumsan, quis
-              lobortis diam sagittis. Nullam efficitur mi at enim maximus
-              tincidunt. Maecenas vulputate tincidunt sem, vehicula scelerisque
-              orci consectetur a. Phasellus at pharetra odio, in convallis leo.
-              Curabitur volutpat odio non pretium aliquet. Proin tempus mollis
-              suscipit. Aliquam ligula metus, finibus at cursus at, dapibus non
-              turpis.
             </p>
           </div>
         </div>
