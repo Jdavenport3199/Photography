@@ -100,8 +100,13 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
     );
   }, []);
 
-  const handleScroll = (event: any) => {
-    const deltaY = event.deltaY;
+  const handleScroll = (event: WheelEvent | TouchEvent) => {
+    const deltaY =
+      "deltaY" in event
+        ? (event as WheelEvent).deltaY
+        : (event as TouchEvent).changedTouches[0].pageY;
+    // const handleScroll = (event: any) => {
+    //   const deltaY = event.deltaY;
 
     if (deltaY > 0) {
       (tl1.current as any).play();
@@ -121,10 +126,19 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
 
   useEffect(() => {
     window.addEventListener("wheel", handleScroll);
+    window.addEventListener("touchstart", handleScroll);
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchstart", handleScroll);
     };
   }, []);
+
+  // useEffect(() => {
+  //   window.addEventListener("wheel", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <group scale={[scale, scale, scale]} dispose={null} rotation={[0, 2.25, 0]}>
