@@ -26,9 +26,6 @@ export default function Showcase2() {
             <b>Left Click:</b> Rotate
           </li>
           <li>
-            <b>Scroll Wheel:</b> Zoom
-          </li>
-          <li>
             <b>Double Click:</b> Toggle Text
           </li>
         </ul>

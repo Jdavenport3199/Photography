@@ -13,7 +13,7 @@ const Scene2: React.FC<Props> = ({ isHovered, setIsHovered }) => {
     <Canvas>
       <directionalLight intensity={2} position={[0, 2, 4]} />
       <Environment preset="city" />
-      <OrbitControls enablePan={false} />
+      <OrbitControls enablePan={false} enableZoom={false} />
       <Model2 isHovered={isHovered} setIsHovered={setIsHovered} />
     </Canvas>
   );

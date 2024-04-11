@@ -18,6 +18,7 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
   const scale = viewport.width / 40;
   const tl1 = useRef(null);
   const tl2 = useRef(null);
+  const tl3 = useRef(null);
   const materialProps = useControls({
     thickness: { value: 3, min: 0, max: 3, step: 0.05 },
     roughness: { value: 0.2, min: 0, max: 1, step: 0.1 },
@@ -50,6 +51,7 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
   useLayoutEffect(() => {
     (tl1.current as any) = gsap.timeline({ paused: true });
     (tl2.current as any) = gsap.timeline({ paused: true });
+    (tl3.current as any) = gsap.timeline({ paused: true });
 
     (tl1.current as any).to(
       (mesh.current as any).rotation,
@@ -98,6 +100,30 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
       },
       0
     );
+
+    (tl3.current as any).to(
+      (mesh.current as any).rotation,
+      {
+        ease: "back.inOut",
+        duration: 2,
+        y: 8,
+        x: 0,
+        z: 0,
+      },
+      0
+    );
+
+    (tl3.current as any).to(
+      (mesh.current as any).scale,
+      {
+        ease: "power2.inOut",
+        duration: 2,
+        y: 0.25,
+        x: 0.25,
+        z: 0.25,
+      },
+      0
+    );
   }, []);
 
   const handleScroll = (event: WheelEvent | TouchEvent) => {
@@ -119,8 +145,17 @@ const Model: React.FC<Props> = ({ test1, setTest1, test2, setTest2 }) => {
       (tl1.current as any).time() === (tl1.current as any).totalDuration()
     ) {
       (tl2.current as any).play();
-    } else {
+    } else if (deltaY < 0 && (tl3.current as any).time() === 0) {
       (tl2.current as any).reverse();
+    }
+
+    if (
+      deltaY > 0 &&
+      (tl2.current as any).time() === (tl2.current as any).totalDuration()
+    ) {
+      (tl3.current as any).play();
+    } else {
+      (tl3.current as any).reverse();
     }
   };
 
