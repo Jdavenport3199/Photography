@@ -153,9 +153,7 @@ export default function Home() {
     <ReactLenis root>
       <main>
         <div className="nav">
-          <Link href="/">
-            <h1>Danilo Scarpati</h1>
-          </Link>
+          <h1>Danilo Scarpati</h1>
           <div className="projects-list">
             <button onClick={() => handleDropdown()}>Projects</button>
             <ul className="projects" ref={projectsRef}>
@@ -184,7 +182,6 @@ export default function Home() {
             }}
           >
             <Image
-              id="fade"
               src="/image7.jpg"
               width={771}
               height={1000}
@@ -271,6 +268,12 @@ export default function Home() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+
+        <div className="message">
+          <div style={{ width: "95%", textAlign: "center" }}>
+            <p>This gallery is only viewable on desktop devices.</p>
           </div>
         </div>
       </main>

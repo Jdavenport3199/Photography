@@ -49,9 +49,7 @@ export default function Biography() {
     <ReactLenis root>
       <main>
         <div className="nav">
-          <Link href="/">
-            <h1>Danilo Scarpati</h1>
-          </Link>
+          <h1>Danilo Scarpati</h1>
           <div className="projects-list">
             <button onClick={() => handleDropdown()}>Projects</button>
             <ul className="projects" ref={projectsRef}>
@@ -71,26 +69,13 @@ export default function Biography() {
             justifyContent: "center",
           }}
         >
-          <div
-            className="container"
-            style={{
-              width: "60%",
-              display: "flex",
-              alignItems: "center",
-              gap: "2rem",
-            }}
-          >
+          <div className="container-bio">
             <Image
-              id="fade"
+              className="img-bio"
               src="/image6.jpg"
               width={1000}
               height={668}
               alt=""
-              style={{
-                width: "60%",
-                height: "400px",
-                objectFit: "cover",
-              }}
             />
             <div>
               <h2>Biography</h2>
